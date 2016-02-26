@@ -36,7 +36,7 @@ public class AgentResponse {
      */
     public AgentResponse(String text) {
         this.text = text;
-        this.statusCode = AgentMessages.SUCCESS;
+        this.statusCode = AgentStatusCode.SUCCESS;
     }
 
     /**
@@ -81,7 +81,7 @@ public class AgentResponse {
      * Get the status code
      * 
      * @return the status code
-     * @see AgentMessages
+     * @see AgentStatusCode
      */
     public int getStatusCode() {
         return statusCode;
@@ -91,7 +91,7 @@ public class AgentResponse {
      * Set the status code
      * 
      * @param code the status code
-     * @see AgentMessages
+     * @see AgentStatusCode
      */
     public void setStatusCode(int code) {
         this.statusCode = code;

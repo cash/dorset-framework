@@ -56,20 +56,20 @@ public class RemoteAgent extends AbstractAgent {
 
     @Override
     public AgentResponse process(AgentRequest request) {
-        AgentResponse response = new AgentResponse(AgentMessages.NO_RESPONSE);
+        AgentResponse response = new AgentResponse(AgentStatusCode.NO_RESPONSE);
         String json = gson.toJson(request);
         String resp = client.post(requestUrl, json, HttpClient.APPLICATION_JSON);
         if (resp != null) {
             try {
                 response = gson.fromJson(resp, AgentResponse.class);
                 // the gson deserialization code is very permissive so we verify
-                if (response.getStatusCode() == AgentMessages.SUCCESS
+                if (response.getStatusCode() == AgentStatusCode.SUCCESS
                                 && response.getText() == null) {
-                    response.setStatusCode(AgentMessages.INVALID_RESPONSE);
+                    response.setStatusCode(AgentStatusCode.INVALID_RESPONSE);
                     logger.warn("Invalid json for request: " + resp);
                 }
             } catch (JsonSyntaxException e) {
-                response = new AgentResponse(AgentMessages.INVALID_RESPONSE);
+                response = new AgentResponse(AgentStatusCode.INVALID_RESPONSE);
                 logger.warn("Invalid json for request: " + resp);
             }
         }

@@ -16,8 +16,6 @@
  */
 package edu.jhuapl.dorset;
 
-import edu.jhuapl.dorset.agent.AgentMessages;
-
 /**
  * Dorset Response
  *
@@ -27,7 +25,7 @@ import edu.jhuapl.dorset.agent.AgentMessages;
  */
 public class Response {
     private String text;
-    private int statusCode;
+    private ResponseCode status;
 
     /**
      * Create a response
@@ -35,25 +33,25 @@ public class Response {
      */
     public Response(String text) {
         this.text = text;
-        this.statusCode = AgentMessages.SUCCESS;
+        this.status = ResponseCode.SUCCESS;
     }
 
     /**
      * Create a response
      * @param text the text of the response
-     * @param code the status code
+     * @param status the status code
      */
-    public Response(String text, int code) {
+    public Response(String text, ResponseCode status) {
         this.text = text;
-        this.statusCode = code;
+        this.status = status;
     }
 
     /**
      * Create a response
      * @param code the status code
      */
-    public Response(int code) {
-        this.statusCode = code;
+    public Response(ResponseCode status) {
+        this.status = status;
     }
 
     /**
@@ -76,20 +74,18 @@ public class Response {
     }
 
     /**
-     * Get the status code
-     * @return the status code
-     * @see AgentMessages
+     * Get the status of the response
+     * @return the status
      */
-    public int getStatusCode() {
-        return statusCode;
+    public ResponseCode getStatus() {
+        return status;
     }
 
     /**
-     * Set the status code
-     * @param code the status code
-     * @see AgentMessages
+     * Set the status of the response
+     * @param code the status
      */
-    public void setStatusCode(int code) {
-        this.statusCode = code;
+    public void setStatusCode(ResponseCode status) {
+        this.status = status;
     }
 }

@@ -17,7 +17,7 @@
 package edu.jhuapl.dorset.agents;
 
 import edu.jhuapl.dorset.agent.AbstractAgent;
-import edu.jhuapl.dorset.agent.AgentMessages;
+import edu.jhuapl.dorset.agent.AgentStatusCode;
 import edu.jhuapl.dorset.agent.AgentRequest;
 import edu.jhuapl.dorset.agent.AgentResponse;
 import edu.jhuapl.dorset.agent.Description;
@@ -73,7 +73,7 @@ public class DateTimeAgent extends AbstractAgent {
                 response.setText(getTime(now));
                 break;
             default:
-                response.setStatusCode(AgentMessages.BAD_REQUEST);
+                response.setStatusCode(AgentStatusCode.BAD_REQUEST);
                 break;
         }
         

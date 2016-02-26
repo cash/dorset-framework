@@ -29,7 +29,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import edu.jhuapl.dorset.agent.AbstractAgent;
-import edu.jhuapl.dorset.agent.AgentMessages;
+import edu.jhuapl.dorset.agent.AgentStatusCode;
 import edu.jhuapl.dorset.agent.AgentRequest;
 import edu.jhuapl.dorset.agent.AgentResponse;
 import edu.jhuapl.dorset.agent.Description;
@@ -83,12 +83,12 @@ public class DuckDuckGoAgent extends AbstractAgent {
         String heading = jsonObj.get("Heading").getAsString();
         if (heading.equals("")) {
             // duckduckgo does not know
-            return new AgentResponse(AgentMessages.UNKNOWN_ANSWER);
+            return new AgentResponse(AgentStatusCode.UNKNOWN_ANSWER);
         }
         String abstractText = jsonObj.get("AbstractText").getAsString();
         if (abstractText.equals("")) {
             // most likely a disambiguation page
-            return new AgentResponse(AgentMessages.MORE_INFORMATION_NEEDED);
+            return new AgentResponse(AgentStatusCode.MORE_INFORMATION_NEEDED);
         }
         return new AgentResponse(abstractText);
     }

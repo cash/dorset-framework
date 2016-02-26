@@ -61,7 +61,7 @@ public class RemoteAgentTest {
         AgentResponse response = agent.process(request);
 
         assertNull(response.getText());
-        assertEquals(AgentMessages.INVALID_RESPONSE, response.getStatusCode());
+        assertEquals(AgentStatusCode.INVALID_RESPONSE, response.getStatusCode());
     }
 
     @Test
@@ -75,7 +75,7 @@ public class RemoteAgentTest {
         AgentResponse response = agent.process(request);
 
         assertNull(response.getText());
-        assertEquals(AgentMessages.INVALID_RESPONSE, response.getStatusCode());
+        assertEquals(AgentStatusCode.INVALID_RESPONSE, response.getStatusCode());
     }
 
     @Test
